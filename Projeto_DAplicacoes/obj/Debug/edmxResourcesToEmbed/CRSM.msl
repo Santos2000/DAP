@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CRSMStoreContainer" CdmEntityContainer="CRSMContainer">
+    <EntitySetMapping Name="PedidoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(CRSM.Pedido)">
+        <MappingFragment StoreEntitySet="PedidoSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DataPedido" ColumnName="DataPedido" />
+          <ScalarProperty Name="Pago" ColumnName="Pago" />
+          <ScalarProperty Name="Levantado" ColumnName="Levantado" />
+          <ScalarProperty Name="TipoPedido" ColumnName="TipoPedido" />
+          <ScalarProperty Name="Observacoes" ColumnName="Observacoes" />
+          <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+          <ScalarProperty Name="ClienteId1" ColumnName="ClienteId1" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(CRSM.PedidoTabelado)">
+        <MappingFragment StoreEntitySet="PedidoSet_PedidoTabelado">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(CRSM.Orcamento)">
+        <MappingFragment StoreEntitySet="PedidoSet_Orcamento">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="Aceite" ColumnName="Aceite" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DevolucaoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(CRSM.Devolucao)">
+        <MappingFragment StoreEntitySet="DevolucaoSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DataDevolucao" ColumnName="DataDevolucao" />
+          <ScalarProperty Name="ValorDevolvido" ColumnName="ValorDevolvido" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="PedidoId" ColumnName="PedidoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TrabalhoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(CRSM.Trabalho)">
+        <MappingFragment StoreEntitySet="TrabalhoSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DescricaoPeca" ColumnName="DescricaoPeca" />
+          <ScalarProperty Name="CorPeca" ColumnName="CorPeca" />
+          <ScalarProperty Name="ValorPago" ColumnName="ValorPago" />
+          <ScalarProperty Name="Pago" ColumnName="Pago" />
+          <ScalarProperty Name="Levantado" ColumnName="Levantado" />
+          <ScalarProperty Name="DataLevantamento" ColumnName="DataLevantamento" />
+          <ScalarProperty Name="Observacoes" ColumnName="Observacoes" />
+          <ScalarProperty Name="DevolucaoId" ColumnName="DevolucaoId" />
+          <ScalarProperty Name="PedidoTabeladoId" ColumnName="PedidoTabeladoId" />
+          <ScalarProperty Name="PecaArranjoArranjoId" ColumnName="PecaArranjoArranjoId" />
+          <ScalarProperty Name="PecaArranjoPecaId" ColumnName="PecaArranjoPecaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClienteSet">
+      <EntityTypeMapping TypeName="IsTypeOf(CRSM.Cliente)">
+        <MappingFragment StoreEntitySet="ClienteSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Morada" ColumnName="Morada" />
+          <ScalarProperty Name="Localidade" ColumnName="Localidade" />
+          <ScalarProperty Name="Codigo_Postal" ColumnName="Codigo_Postal" />
+          <ScalarProperty Name="Nif" ColumnName="Nif" />
+          <ScalarProperty Name="Telefone_Contacto" ColumnName="Telefone_Contacto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FornecedorSet">
+      <EntityTypeMapping TypeName="IsTypeOf(CRSM.Fornecedor)">
+        <MappingFragment StoreEntitySet="FornecedorSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Morada" ColumnName="Morada" />
+          <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+          <ScalarProperty Name="CodigoPostal" ColumnName="CodigoPostal" />
+          <ScalarProperty Name="Nif" ColumnName="Nif" />
+          <ScalarProperty Name="Localidade" ColumnName="Localidade" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StockMateriaisSet">
+      <EntityTypeMapping TypeName="IsTypeOf(CRSM.StockMateriais)">
+        <MappingFragment StoreEntitySet="StockMateriaisSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="QuantActual" ColumnName="QuantActual" />
+          <ScalarProperty Name="ConsumoMedioDiario" ColumnName="ConsumoMedioDiario" />
+          <ScalarProperty Name="StockMinimo" ColumnName="StockMinimo" />
+          <ScalarProperty Name="PecaArranjoArranjoId" ColumnName="PecaArranjoArranjoId" />
+          <ScalarProperty Name="PecaArranjoPecaId" ColumnName="PecaArranjoPecaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ForneceSet">
+      <EntityTypeMapping TypeName="IsTypeOf(CRSM.Fornece)">
+        <MappingFragment StoreEntitySet="ForneceSet">
+          <ScalarProperty Name="FornecedorId" ColumnName="FornecedorId" />
+          <ScalarProperty Name="StockMateriaisId" ColumnName="StockMateriaisId" />
+          <ScalarProperty Name="Preco" ColumnName="Preco" />
+          <ScalarProperty Name="PrazoEntrega" ColumnName="PrazoEntrega" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ConsumoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(CRSM.Consumo)">
+        <MappingFragment StoreEntitySet="ConsumoSet">
+          <ScalarProperty Name="StockMateriaisId" ColumnName="StockMateriaisId" />
+          <ScalarProperty Name="Arranjo_Id" ColumnName="Arranjo_Id" />
+          <ScalarProperty Name="QuantidadeMedia" ColumnName="QuantidadeMedia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArranjoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(CRSM.Arranjo)">
+        <MappingFragment StoreEntitySet="ArranjoSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TipoArranjo" ColumnName="TipoArranjo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PecaSet">
+      <EntityTypeMapping TypeName="IsTypeOf(CRSM.Peca)">
+        <MappingFragment StoreEntitySet="PecaSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TipoPeca" ColumnName="TipoPeca" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PecaArranjoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(CRSM.PecaArranjo)">
+        <MappingFragment StoreEntitySet="PecaArranjoSet">
+          <ScalarProperty Name="ArranjoId" ColumnName="ArranjoId" />
+          <ScalarProperty Name="PecaId" ColumnName="PecaId" />
+          <ScalarProperty Name="Preco" ColumnName="Preco" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

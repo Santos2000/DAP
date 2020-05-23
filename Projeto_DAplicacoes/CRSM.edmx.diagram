@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="285658ccdb1d40b386350db35e55de00" Name="Diagram1" ZoomLevel="99" >
+        <EntityTypeShape EntityType="CRSM.Pedido" Width="1.5" PointX="0.5" PointY="2" />
+        <EntityTypeShape EntityType="CRSM.Devolucao" Width="1.5" PointX="0.5" PointY="6.125" />
+        <AssociationConnector Association="CRSM.PedidoDevolucao" />
+        <EntityTypeShape EntityType="CRSM.Orcamento" Width="1.5" PointX="2.25" PointY="2" />
+        <InheritanceConnector EntityType="CRSM.Orcamento" />
+        <EntityTypeShape EntityType="CRSM.PedidoTabelado" Width="1.5" PointX="2.25" PointY="4.125" />
+        <InheritanceConnector EntityType="CRSM.PedidoTabelado" />
+        <EntityTypeShape EntityType="CRSM.Trabalho" Width="1.5" PointX="4.25" PointY="4.875" />
+        <AssociationConnector Association="CRSM.DevolucaoTrabalho" />
+        <AssociationConnector Association="CRSM.PedidoTabeladoTrabalho" />
+        <EntityTypeShape EntityType="CRSM.Cliente" Width="1.5" PointX="4.25" PointY="2" />
+        <AssociationConnector Association="CRSM.ClientePedido" />
+        <EntityTypeShape EntityType="CRSM.Fornecedor" Width="1.5" PointX="6.5" PointY="2" />
+        <EntityTypeShape EntityType="CRSM.StockMateriais" Width="1.5" PointX="10.375" PointY="2" />
+        <EntityTypeShape EntityType="CRSM.Fornece" Width="1.5" PointX="8.375" PointY="2" />
+        <AssociationConnector Association="CRSM.FornecedorFornece" />
+        <AssociationConnector Association="CRSM.StockMateriaisFornece" />
+        <EntityTypeShape EntityType="CRSM.Consumo" Width="1.5" PointX="10.375" PointY="5.125" />
+        <EntityTypeShape EntityType="CRSM.Arranjo" Width="1.5" PointX="8.375" PointY="5.125" />
+        <EntityTypeShape EntityType="CRSM.Peca" Width="1.5" PointX="8.375" PointY="7.25" />
+        <EntityTypeShape EntityType="CRSM.PecaArranjo" Width="1.5" PointX="6.5" PointY="6.25" />
+        <AssociationConnector Association="CRSM.StockMateriaisConsumo" />
+        <AssociationConnector Association="CRSM.ArranjoConsumo" />
+        <AssociationConnector Association="CRSM.ArranjoPecaArranjo" />
+        <AssociationConnector Association="CRSM.PecaPecaArranjo" />
+        <AssociationConnector Association="CRSM.PecaArranjoTrabalho" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

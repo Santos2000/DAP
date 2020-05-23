@@ -1,0 +1,340 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="CRSM" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="CRSMContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="PedidoSet" EntityType="CRSM.Pedido" />
+    <EntitySet Name="DevolucaoSet" EntityType="CRSM.Devolucao" />
+    <AssociationSet Name="PedidoDevolucao" Association="CRSM.PedidoDevolucao">
+      <End Role="Pedido" EntitySet="PedidoSet" />
+      <End Role="Devolucao" EntitySet="DevolucaoSet" />
+    </AssociationSet>
+    <EntitySet Name="TrabalhoSet" EntityType="CRSM.Trabalho" />
+    <AssociationSet Name="DevolucaoTrabalho" Association="CRSM.DevolucaoTrabalho">
+      <End Role="Devolucao" EntitySet="DevolucaoSet" />
+      <End Role="Trabalho" EntitySet="TrabalhoSet" />
+    </AssociationSet>
+    <AssociationSet Name="PedidoTabeladoTrabalho" Association="CRSM.PedidoTabeladoTrabalho">
+      <End Role="PedidoTabelado" EntitySet="PedidoSet" />
+      <End Role="Trabalho" EntitySet="TrabalhoSet" />
+    </AssociationSet>
+    <EntitySet Name="ClienteSet" EntityType="CRSM.Cliente" />
+    <AssociationSet Name="ClientePedido" Association="CRSM.ClientePedido">
+      <End Role="Cliente" EntitySet="ClienteSet" />
+      <End Role="Pedido" EntitySet="PedidoSet" />
+    </AssociationSet>
+    <EntitySet Name="FornecedorSet" EntityType="CRSM.Fornecedor" />
+    <EntitySet Name="StockMateriaisSet" EntityType="CRSM.StockMateriais" />
+    <EntitySet Name="ForneceSet" EntityType="CRSM.Fornece" />
+    <AssociationSet Name="FornecedorFornece" Association="CRSM.FornecedorFornece">
+      <End Role="Fornecedor" EntitySet="FornecedorSet" />
+      <End Role="Fornece" EntitySet="ForneceSet" />
+    </AssociationSet>
+    <AssociationSet Name="StockMateriaisFornece" Association="CRSM.StockMateriaisFornece">
+      <End Role="StockMateriais" EntitySet="StockMateriaisSet" />
+      <End Role="Fornece" EntitySet="ForneceSet" />
+    </AssociationSet>
+    <EntitySet Name="ConsumoSet" EntityType="CRSM.Consumo" />
+    <EntitySet Name="ArranjoSet" EntityType="CRSM.Arranjo" />
+    <EntitySet Name="PecaSet" EntityType="CRSM.Peca" />
+    <EntitySet Name="PecaArranjoSet" EntityType="CRSM.PecaArranjo" />
+    <AssociationSet Name="StockMateriaisConsumo" Association="CRSM.StockMateriaisConsumo">
+      <End Role="StockMateriais" EntitySet="StockMateriaisSet" />
+      <End Role="Consumo" EntitySet="ConsumoSet" />
+    </AssociationSet>
+    <AssociationSet Name="ArranjoConsumo" Association="CRSM.ArranjoConsumo">
+      <End Role="Arranjo" EntitySet="ArranjoSet" />
+      <End Role="Consumo" EntitySet="ConsumoSet" />
+    </AssociationSet>
+    <AssociationSet Name="ArranjoPecaArranjo" Association="CRSM.ArranjoPecaArranjo">
+      <End Role="Arranjo" EntitySet="ArranjoSet" />
+      <End Role="PecaArranjo" EntitySet="PecaArranjoSet" />
+    </AssociationSet>
+    <AssociationSet Name="PecaPecaArranjo" Association="CRSM.PecaPecaArranjo">
+      <End Role="Peca" EntitySet="PecaSet" />
+      <End Role="PecaArranjo" EntitySet="PecaArranjoSet" />
+    </AssociationSet>
+    <AssociationSet Name="PecaArranjoTrabalho" Association="CRSM.PecaArranjoTrabalho">
+      <End Role="PecaArranjo" EntitySet="PecaArranjoSet" />
+      <End Role="Trabalho" EntitySet="TrabalhoSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Pedido">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DataPedido" Type="DateTime" Nullable="false" />
+    <Property Name="Pago" Type="Boolean" Nullable="false" />
+    <Property Name="Levantado" Type="Boolean" Nullable="false" />
+    <Property Name="TipoPedido" Type="String" Nullable="false" />
+    <Property Name="Observacoes" Type="String" Nullable="false" />
+    <Property Name="ClienteId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Devolucao" Relationship="CRSM.PedidoDevolucao" FromRole="Pedido" ToRole="Devolucao" />
+    <NavigationProperty Name="Cliente" Relationship="CRSM.ClientePedido" FromRole="Pedido" ToRole="Cliente" />
+    <Property Name="ClienteId1" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Devolucao">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DataDevolucao" Type="DateTime" Nullable="false" />
+    <Property Name="ValorDevolvido" Type="Double" Nullable="false" />
+    <Property Name="Descricao" Type="String" Nullable="false" />
+    <NavigationProperty Name="Pedido" Relationship="CRSM.PedidoDevolucao" FromRole="Devolucao" ToRole="Pedido" />
+    <Property Name="PedidoId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Trabalho" Relationship="CRSM.DevolucaoTrabalho" FromRole="Devolucao" ToRole="Trabalho" />
+  </EntityType>
+  <Association Name="PedidoDevolucao">
+    <End Type="CRSM.Pedido" Role="Pedido" Multiplicity="1" />
+    <End Type="CRSM.Devolucao" Role="Devolucao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pedido">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Devolucao">
+        <PropertyRef Name="PedidoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Orcamento" BaseType="CRSM.Pedido">
+    <Property Name="Descricao" Type="String" Nullable="false" />
+    <Property Name="Valor" Type="Double" Nullable="false" />
+    <Property Name="Aceite" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PedidoTabelado" BaseType="CRSM.Pedido">
+    <NavigationProperty Name="Trabalho" Relationship="CRSM.PedidoTabeladoTrabalho" FromRole="PedidoTabelado" ToRole="Trabalho" />
+  </EntityType>
+  <EntityType Name="Trabalho">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DescricaoPeca" Type="String" Nullable="false" />
+    <Property Name="CorPeca" Type="String" Nullable="false" />
+    <Property Name="ValorPago" Type="Double" Nullable="false" />
+    <Property Name="Pago" Type="String" Nullable="false" />
+    <Property Name="Levantado" Type="String" Nullable="false" />
+    <Property Name="DataLevantamento" Type="String" Nullable="false" />
+    <Property Name="Observacoes" Type="String" Nullable="false" />
+    <NavigationProperty Name="Devolucao" Relationship="CRSM.DevolucaoTrabalho" FromRole="Trabalho" ToRole="Devolucao" />
+    <Property Name="DevolucaoId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PedidoTabelado" Relationship="CRSM.PedidoTabeladoTrabalho" FromRole="Trabalho" ToRole="PedidoTabelado" />
+    <Property Name="PedidoTabeladoId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PecaArranjo" Relationship="CRSM.PecaArranjoTrabalho" FromRole="Trabalho" ToRole="PecaArranjo" />
+    <Property Name="PecaArranjoArranjoId" Type="Int32" Nullable="false" />
+    <Property Name="PecaArranjoPecaId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="DevolucaoTrabalho">
+    <End Type="CRSM.Devolucao" Role="Devolucao" Multiplicity="1" />
+    <End Type="CRSM.Trabalho" Role="Trabalho" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Devolucao">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Trabalho">
+        <PropertyRef Name="DevolucaoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PedidoTabeladoTrabalho">
+    <End Type="CRSM.PedidoTabelado" Role="PedidoTabelado" Multiplicity="1" />
+    <End Type="CRSM.Trabalho" Role="Trabalho" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PedidoTabelado">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Trabalho">
+        <PropertyRef Name="PedidoTabeladoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" Nullable="false" />
+    <Property Name="Morada" Type="String" Nullable="false" />
+    <Property Name="Localidade" Type="String" Nullable="false" />
+    <Property Name="Codigo_Postal" Type="String" Nullable="false" />
+    <Property Name="Nif" Type="String" Nullable="false" />
+    <Property Name="Telefone_Contacto" Type="String" Nullable="false" />
+    <NavigationProperty Name="Pedido" Relationship="CRSM.ClientePedido" FromRole="Cliente" ToRole="Pedido" />
+  </EntityType>
+  <Association Name="ClientePedido">
+    <End Type="CRSM.Cliente" Role="Cliente" Multiplicity="1" />
+    <End Type="CRSM.Pedido" Role="Pedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pedido">
+        <PropertyRef Name="ClienteId1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Fornecedor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" Nullable="false" />
+    <Property Name="Morada" Type="String" Nullable="false" />
+    <Property Name="Telefone" Type="Int32" Nullable="false" />
+    <Property Name="CodigoPostal" Type="String" Nullable="false" />
+    <Property Name="Nif" Type="Int32" Nullable="false" />
+    <Property Name="Localidade" Type="String" Nullable="false" />
+    <NavigationProperty Name="Fornece" Relationship="CRSM.FornecedorFornece" FromRole="Fornecedor" ToRole="Fornece" />
+  </EntityType>
+  <EntityType Name="StockMateriais">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QuantActual" Type="Int32" Nullable="false" />
+    <Property Name="ConsumoMedioDiario" Type="Int32" Nullable="false" />
+    <Property Name="StockMinimo" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Fornece" Relationship="CRSM.StockMateriaisFornece" FromRole="StockMateriais" ToRole="Fornece" />
+    <NavigationProperty Name="Consumo" Relationship="CRSM.StockMateriaisConsumo" FromRole="StockMateriais" ToRole="Consumo" />
+    <Property Name="PecaArranjoArranjoId" Nullable="false" Type="Int32" />
+    <Property Name="PecaArranjoPecaId" Nullable="false" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Fornece">
+    <Key>
+      <PropertyRef Name="FornecedorId" />
+      <PropertyRef Name="StockMateriaisId" />
+    </Key>
+    <Property Name="Preco" Type="Double" Nullable="false" />
+    <Property Name="PrazoEntrega" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="Fornecedor" Relationship="CRSM.FornecedorFornece" FromRole="Fornece" ToRole="Fornecedor" />
+    <Property Name="FornecedorId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="StockMateriais" Relationship="CRSM.StockMateriaisFornece" FromRole="Fornece" ToRole="StockMateriais" />
+    <Property Name="StockMateriaisId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FornecedorFornece">
+    <End Type="CRSM.Fornecedor" Role="Fornecedor" Multiplicity="1" />
+    <End Type="CRSM.Fornece" Role="Fornece" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fornecedor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Fornece">
+        <PropertyRef Name="FornecedorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="StockMateriaisFornece">
+    <End Type="CRSM.StockMateriais" Role="StockMateriais" Multiplicity="1" />
+    <End Type="CRSM.Fornece" Role="Fornece" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StockMateriais">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Fornece">
+        <PropertyRef Name="StockMateriaisId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Consumo">
+    <Key>
+      <PropertyRef Name="StockMateriaisId" />
+      <PropertyRef Name="Arranjo_Id" />
+    </Key>
+    <Property Name="QuantidadeMedia" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="StockMateriais" Relationship="CRSM.StockMateriaisConsumo" FromRole="Consumo" ToRole="StockMateriais" />
+    <Property Name="StockMateriaisId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Arranjo" Relationship="CRSM.ArranjoConsumo" FromRole="Consumo" ToRole="Arranjo" />
+    <Property Name="Arranjo_Id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Arranjo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Consumo" Relationship="CRSM.ArranjoConsumo" FromRole="Arranjo" ToRole="Consumo" />
+    <Property Name="TipoArranjo" Type="String" Nullable="false" />
+    <NavigationProperty Name="PecaArranjo" Relationship="CRSM.ArranjoPecaArranjo" FromRole="Arranjo" ToRole="PecaArranjo" />
+  </EntityType>
+  <EntityType Name="Peca">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TipoPeca" Type="String" Nullable="false" />
+    <NavigationProperty Name="PecaArranjo" Relationship="CRSM.PecaPecaArranjo" FromRole="Peca" ToRole="PecaArranjo" />
+  </EntityType>
+  <EntityType Name="PecaArranjo">
+    <Key>
+      <PropertyRef Name="ArranjoId" />
+      <PropertyRef Name="PecaId" />
+    </Key>
+    <NavigationProperty Name="Arranjo" Relationship="CRSM.ArranjoPecaArranjo" FromRole="PecaArranjo" ToRole="Arranjo" />
+    <Property Name="ArranjoId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Peca" Relationship="CRSM.PecaPecaArranjo" FromRole="PecaArranjo" ToRole="Peca" />
+    <Property Name="PecaId" Type="Int32" Nullable="false" />
+    <Property Name="Preco" Type="Double" Nullable="false" />
+    <NavigationProperty Name="Trabalho" Relationship="CRSM.PecaArranjoTrabalho" FromRole="PecaArranjo" ToRole="Trabalho" />
+  </EntityType>
+  <Association Name="StockMateriaisConsumo">
+    <End Type="CRSM.StockMateriais" Role="StockMateriais" Multiplicity="1" />
+    <End Type="CRSM.Consumo" Role="Consumo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StockMateriais">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Consumo">
+        <PropertyRef Name="StockMateriaisId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ArranjoConsumo">
+    <End Type="CRSM.Arranjo" Role="Arranjo" Multiplicity="1" />
+    <End Type="CRSM.Consumo" Role="Consumo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Arranjo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Consumo">
+        <PropertyRef Name="Arranjo_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ArranjoPecaArranjo">
+    <End Type="CRSM.Arranjo" Role="Arranjo" Multiplicity="1" />
+    <End Type="CRSM.PecaArranjo" Role="PecaArranjo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Arranjo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PecaArranjo">
+        <PropertyRef Name="ArranjoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PecaPecaArranjo">
+    <End Type="CRSM.Peca" Role="Peca" Multiplicity="1" />
+    <End Type="CRSM.PecaArranjo" Role="PecaArranjo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Peca">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PecaArranjo">
+        <PropertyRef Name="PecaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PecaArranjoTrabalho">
+    <End Type="CRSM.PecaArranjo" Role="PecaArranjo" Multiplicity="1" />
+    <End Type="CRSM.Trabalho" Role="Trabalho" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PecaArranjo">
+        <PropertyRef Name="ArranjoId" />
+        <PropertyRef Name="PecaId" />
+      </Principal>
+      <Dependent Role="Trabalho">
+        <PropertyRef Name="PecaArranjoArranjoId" />
+        <PropertyRef Name="PecaArranjoPecaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

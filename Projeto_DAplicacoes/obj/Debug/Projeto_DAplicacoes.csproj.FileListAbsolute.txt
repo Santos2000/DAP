@@ -1,0 +1,17 @@
+C:\Users\andre\source\repos\Desenvolvimento de Aplicações\Projetos\Projeto_DAplicacoes\Projeto_DAplicacoes\bin\Debug\Projeto_DAplicacoes.exe.config
+C:\Users\andre\source\repos\Desenvolvimento de Aplicações\Projetos\Projeto_DAplicacoes\Projeto_DAplicacoes\bin\Debug\Projeto_DAplicacoes.exe
+C:\Users\andre\source\repos\Desenvolvimento de Aplicações\Projetos\Projeto_DAplicacoes\Projeto_DAplicacoes\bin\Debug\Projeto_DAplicacoes.pdb
+C:\Users\andre\source\repos\Desenvolvimento de Aplicações\Projetos\Projeto_DAplicacoes\Projeto_DAplicacoes\bin\Debug\EntityFramework.dll
+C:\Users\andre\source\repos\Desenvolvimento de Aplicações\Projetos\Projeto_DAplicacoes\Projeto_DAplicacoes\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\andre\source\repos\Desenvolvimento de Aplicações\Projetos\Projeto_DAplicacoes\Projeto_DAplicacoes\bin\Debug\EntityFramework.xml
+C:\Users\andre\source\repos\Desenvolvimento de Aplicações\Projetos\Projeto_DAplicacoes\Projeto_DAplicacoes\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\andre\source\repos\Desenvolvimento de Aplicações\Projetos\Projeto_DAplicacoes\Projeto_DAplicacoes\obj\Debug\Projeto_DAplicacoes.csprojAssemblyReference.cache
+C:\Users\andre\source\repos\Desenvolvimento de Aplicações\Projetos\Projeto_DAplicacoes\Projeto_DAplicacoes\obj\Debug\Projeto_DAplicacoes.Form1.resources
+C:\Users\andre\source\repos\Desenvolvimento de Aplicações\Projetos\Projeto_DAplicacoes\Projeto_DAplicacoes\obj\Debug\Projeto_DAplicacoes.Properties.Resources.resources
+C:\Users\andre\source\repos\Desenvolvimento de Aplicações\Projetos\Projeto_DAplicacoes\Projeto_DAplicacoes\obj\Debug\Projeto_DAplicacoes.csproj.GenerateResource.cache
+C:\Users\andre\source\repos\Desenvolvimento de Aplicações\Projetos\Projeto_DAplicacoes\Projeto_DAplicacoes\obj\Debug\Projeto_DAplicacoes.csproj.CopyComplete
+C:\Users\andre\source\repos\Desenvolvimento de Aplicações\Projetos\Projeto_DAplicacoes\Projeto_DAplicacoes\obj\Debug\Projeto_DAplicacoes.exe
+C:\Users\andre\source\repos\Desenvolvimento de Aplicações\Projetos\Projeto_DAplicacoes\Projeto_DAplicacoes\obj\Debug\Projeto_DAplicacoes.pdb
+C:\Users\andre\source\repos\Desenvolvimento de Aplicações\Projetos\Projeto_DAplicacoes\Projeto_DAplicacoes\obj\Debug\Projeto_DAplicacoes.GerirClientes.resources
+C:\Users\andre\source\repos\Desenvolvimento de Aplicações\Projetos\Projeto_DAplicacoes\Projeto_DAplicacoes\obj\Debug\Projeto_DAplicacoes.GerirPedidos.resources
+C:\Users\andre\source\repos\Desenvolvimento de Aplicações\Projetos\Projeto_DAplicacoes\Projeto_DAplicacoes\obj\Debug\Projeto_DAplicacoes.GerirFornecedorMaterial.resources
